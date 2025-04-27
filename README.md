@@ -1,5 +1,4 @@
-# proposal
-## Analyzing Fan Engagement and Ticket Pricing Trends Across U.S. Concert Venues
+# Analyzing Fan Engagement and Ticket Pricing Trends Across U.S. Concert Venues
 
 # Project Overview
 This project explores how fan engagement trends and average ticket pricing vary by region, artist genre, and venue capacity. The goal is to generate actionable insights to inform smarter marketing and pricing strategies for live events companies like Ticketmaster. Using data pipelines, SQL transformations, and dynamic dashboards, this project creates clear and interactive visualizations tailored to client needs.
