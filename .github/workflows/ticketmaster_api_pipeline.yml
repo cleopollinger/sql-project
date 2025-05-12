@@ -1,0 +1,30 @@
+name: Run Event Processor
+
+on:
+  workflow_dispatch:  # Allows manual triggering
+  schedule:
+    - cron: '0 8 * * *'  # Runs every day at 8:00 AM UTC
+
+jobs:
+  process_events:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas
+          pip install papermill
+
+      - name: Execute event processing script
+        run: python ticketmaster_API_Extract_Load_Raw.ipynb
+        
+
