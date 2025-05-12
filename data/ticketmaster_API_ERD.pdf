@@ -1,0 +1,49 @@
+Star Schema: Concert Events Data Warehouse
+
+| Column Name | Data Type | Description                                   |                                                                                                        |
+| ----------- | --------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `event_id`  | INTEGER   | Primary key; unique identifier for each event |                                                                                                        |
+| `artist_id` | INTEGER   | Foreign key to `dim_artist`                   |                                                                                                        |
+| `venue_id`  | INTEGER   | Foreign key to `dim_venue`                    |                                                                                                        |
+| `date_id`   | INTEGER   | Foreign key to `dim_date`                     |                                                                                                        |
+| `time_id`   | INTEGER   | Foreign key to `dim_time`                     | ([Stack Overflow][1], [GeeksforGeeks][2], [Data Finz][3], [Database Administrators Stack Exchange][4]) |
+
+[1]: https://stackoverflow.com/questions/72735151/what-is-the-best-way-to-convert-json-schema-to-er-diagram?utm_source=chatgpt.com "What is the best way to convert json schema to ER Diagram? [closed]"
+[2]: https://www.geeksforgeeks.org/star-schema-in-data-warehouse-modeling/?utm_source=chatgpt.com "Star Schema in Data Warehouse modeling - GeeksforGeeks"
+[3]: https://datafinz.com/solutions/generate-erd-from-json-xml/?utm_source=chatgpt.com "TRYERD for Free | Generate ERD from JSON/XML - DataFinz"
+[4]: https://dba.stackexchange.com/questions/270817/the-right-way-to-model-multiple-facts-schema?utm_source=chatgpt.com "The right way to model multiple FACTs schema - DBA Stack Exchange"
+
+Dimension Tables
+
+| Column Name | Data Type | Description        |   |
+| ----------- | --------- | ------------------ | - |
+| `artist_id` | INTEGER   | Primary key        |   |
+| `name`      | TEXT      | Name of the artist |   |
+
+
+| Column Name | Data Type | Description                    |   |
+| ----------- | --------- | ------------------------------ | - |
+| `venue_id`  | INTEGER   | Primary key                    |   |
+| `name`      | TEXT      | Name of the venue              |   |
+| `city`      | TEXT      | City where venue is located    |   |
+| `country`   | TEXT      | Country where venue is located |   |
+
+
+| Column Name | Data Type | Description            |   |
+| ----------- | --------- | ---------------------- | - |
+| `date_id`   | INTEGER   | Primary key            |   |
+| `date`      | DATE      | Full date of the event |   |
+| `day`       | INTEGER   | Day of the month       |   |
+| `month`     | INTEGER   | Month of the year      |   |
+| `year`      | INTEGER   | Year                   |   |
+| `weekday`   | TEXT      | Day of the week        |   |
+
+
+| Column Name | Data Type | Description         |   |
+| ----------- | --------- | ------------------- | - |
+| `time_id`   | INTEGER   | Primary key         |   |
+| `time`      | TIME      | Time of the event   |   |
+| `hour`      | INTEGER   | Hour of the event   |   |
+| `minute`    | INTEGER   | Minute of the event |   |
+
+

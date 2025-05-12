@@ -1,0 +1,50 @@
+Star Schema: Concert Events Data Warehouse
+| Column Name      | Data Type | Description                                   |                                                                 |
+| ---------------- | --------- | --------------------------------------------- | --------------------------------------------------------------- |
+| `event_id`       | INTEGER   | Primary key; unique identifier for each event |                                                                 |
+| `artist_id`      | INTEGER   | Foreign key to `dim_artist`                   |                                                                 |
+| `venue_id`       | INTEGER   | Foreign key to `dim_venue`                    |                                                                 |
+| `date_id`        | INTEGER   | Foreign key to `dim_date`                     |                                                                 |
+| `scrape_date_id` | INTEGER   | Foreign key to `dim_scrape_date`              |                                                                 |
+| `source_id`      | INTEGER   | Foreign key to `dim_source`                   |                                                                 |
+| `ticket_price`   | DECIMAL   | (Optional) Ticket price if available          |                                                                 |
+| `event_duration` | INTERVAL  | (Optional) Duration of the event              | ([Stack Overflow][1], [draw.io][2], [YouTube][3], [draw.io][4]) |
+
+[1]: https://stackoverflow.com/questions/59247226/draw-a-er-diagram-using-draw-io?utm_source=chatgpt.com "Draw a ER diagram using Draw.io - Stack Overflow"
+[2]: https://drawio-app.com/blog/entity-relationship-diagrams-with-draw-io/?utm_source=chatgpt.com "Entity Relationship Diagrams (ERDs) with draw.io"
+[3]: https://www.youtube.com/watch?pp=ygUHI2NvbWVyZA%3D%3D&v=lucZPJgxBiw&utm_source=chatgpt.com "How to Draw Entity Relationship Diagram (ERD) Online with draw.io"
+[4]: https://drawio-app.com/erd/?utm_source=chatgpt.com "ERD - draw.io"
+
+Dimension Tables
+| Column Name | Data Type | Description        |   |
+| ----------- | --------- | ------------------ | - |
+| `artist_id` | INTEGER   | Primary key        |   |
+| `name`      | TEXT      | Name of the artist |   |
+| `genre`     | TEXT      | (Optional) Genre   |   |
+
+| Column Name | Data Type | Description                    |   |
+| ----------- | --------- | ------------------------------ | - |
+| `venue_id`  | INTEGER   | Primary key                    |   |
+| `name`      | TEXT      | Name of the venue              |   |
+| `city`      | TEXT      | City where venue is located    |   |
+| `state`     | TEXT      | State where venue is located   |   |
+| `country`   | TEXT      | Country where venue is located |   |
+
+| Column Name | Data Type | Description            |   |
+| ----------- | --------- | ---------------------- | - |
+| `date_id`   | INTEGER   | Primary key            |   |
+| `date`      | DATE      | Full date of the event |   |
+| `day`       | INTEGER   | Day of the month       |   |
+| `month`     | INTEGER   | Month of the year      |   |
+| `year`      | INTEGER   | Year                   |   |
+| `weekday`   | TEXT      | Day of the week        |   |
+
+| Column Name      | Data Type | Description                |   |
+| ---------------- | --------- | -------------------------- | - |
+| `scrape_date_id` | INTEGER   | Primary key                |   |
+| `scrape_date`    | DATE      | Date when data was scraped |   |
+
+| Column Name   | Data Type | Description                              |   |
+| ------------- | --------- | ---------------------------------------- | - |
+| `source_id`   | INTEGER   | Primary key                              |   |
+| `source_name` | TEXT      | Name of the data source (e.g., Songkick) |   |
